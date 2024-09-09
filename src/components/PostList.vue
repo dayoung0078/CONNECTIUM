@@ -5,8 +5,8 @@
       <ul>
         <li v-for="post in posts" :key="post.id">
           {{ post.title }}
-          <router-link :to="`/post/${post.id}`">보기</router-link>
-          <router-link :to="`/post/${post.id}/edit`">수정</router-link>
+          <router-link :to="`/post/${post.id}`"><button @click="postView">보기</button></router-link>
+          <router-link :to="`/post/${post.id}/edit`"><button @click="postEdit">수정</button></router-link>
           <button @click="deletePost(post.id)">삭제</button>
         </li>
       </ul>

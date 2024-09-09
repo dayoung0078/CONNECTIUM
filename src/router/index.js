@@ -3,12 +3,19 @@ import PostCreate from '@/components/PostCreate.vue';
 import PostEdit from '@/components/PostEdit.vue';
 import PostView from '@/components/PostView.vue';
 import PostList from '@/components/PostList.vue';
+import Maintop from '@/components/MainTop.vue';
+
 
 const routes = [
   {
     path: '/',
+    name: 'Maintop',
+    component: Maintop, 
+  },
+  {
+    path: '/',
     name: 'Home',
-    component: PostList,
+    component: PostList, 
   },
   {
     path: '/post/create',

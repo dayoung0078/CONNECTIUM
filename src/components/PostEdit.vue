@@ -14,6 +14,7 @@
           <label for="content">내용:</label>
           <textarea id="content" v-model="post.content" required></textarea>
         </div>
+
         <button type="submit">게시글 수정</button>
       </form>
     </div>

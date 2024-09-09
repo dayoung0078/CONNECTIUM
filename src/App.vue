@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">홈</router-link> |
-      <router-link to="/post/create">새 게시글 작성</router-link>
-    </nav>
+    
+    
     <router-view/>
-  </div>
+       
+        
+    
+    </div>
 </template>
 
 <script>
@@ -14,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,17 +24,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+</style>
 
-nav {
-  padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style >
 </style>

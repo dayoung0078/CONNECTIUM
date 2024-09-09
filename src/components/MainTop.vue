@@ -2,16 +2,20 @@
     <header class="top-header">
         <div class="top-bar">
             <div class="top-container">
-                <div class="logo-slogan">
-                    <img class="imageLogo" src="/connectiumLogoLight.png" alt="">
-                    <div class="text-container">
-                        <h2 class="slogan">아이랑 자유롭게 이어지는 우리 중랑</h2> 
-                        <h1 class="serviceName">커넥티움+</h1>
+                <div class="upper-section">
+                    <div class="logo-slogan">
+                        <router-Link to="/">
+                            <img class="imageLogo" src="/connectiumLogoLight.png" alt="">
+                        </router-Link>
+                        <div class="text-container">
+                            <div class="text-wrapper">
+                                <h2 class="slogan">아이랑 자유롭게 이어지는 우리 중랑</h2> 
+                                <h1 class="serviceName">커넥티움+</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
                     
-                <div>
-                    <div class="auth-conteiner">
+                    <div class="auth-container">
                         <div class="auth-section">
                             <router-link to="#" class="auth-link">로그인</router-link>
                             <router-link to="#" class="auth-link">회원가입</router-link>
@@ -23,32 +27,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="lower-section">
+                    <nav class="main-nav">
+                        <router-link to="#" class="nav-item">공지사항</router-link>
+                        <router-link to="#" class="nav-item">우리아이 커뮤니티</router-link>
+                        <router-link to="#" class="nav-item">교육 프로그램</router-link>
+                        <router-link to="#" class="nav-item">신나는 우리동네</router-link>
+                        <router-link to="#" class="nav-item">우리 같이가요!</router-link>
+                        <router-link to="/post/create" class="nav-item">QnA</router-link>
+                    </nav>
+                </div>
             </div>
         </div>
-
-        
-
-        <div class="lower-section">
-            <nav class="main-nav">
-                <router-link to="#" class="nav-item">공지사항</router-link>
-                <router-link to="#" class="nav-item">우리아이 커뮤니티</router-link>
-                <router-link to="#" class="nav-item">교육 프로그램</router-link>
-                <router-link to="#" class="nav-item">신나는 우리동네</router-link>
-                <router-link to="#" class="nav-item">우리 같이가요!</router-link>
-                <router-link to="/post/create" class="nav-item">QnA</router-link>
-            </nav>
-        </div>
-
     </header>
-
-    <nav>     
-      <router-link to="/">홈</router-link> |
-      <router-link to="/post/create">새 게시글 작성</router-link>
-    </nav>
-
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 </script>
 
 <style src="@/assets/font.css"></style>
@@ -57,27 +52,30 @@
 .top-header {
     padding-right: 30px;
     padding-left: 30px;
-    
 }
 
 .top-bar {
     width: 100%;
-    height: 150px;
     background: #B3E000;
     box-shadow: 0px 3px 7px #DBFA5F;
-    border-radius: 150px;
-    padding: 0 20px;
-    position: relative;
+    border-radius: 50px;
+    padding: 20px;
     display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
+    flex-direction: column;
 }
 
 .top-container {
-    width: 100%;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    margin: 0 100px 0 100px;
+}
+
+.upper-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    margin-bottom: 20px;
 }
 
 .logo-slogan {
@@ -89,71 +87,111 @@
     width: 70px; 
     height: auto; 
     margin-right: 20px;
+    margin-left: 30px;
 }
 
 .text-container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-wrapper {
+    display: flex;
+    align-items: center;
+    text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
 }
 
 .slogan {
     color: white;
-    text-shadow: 1px 1px 2px rgb(31, 31, 31);
     font-size: 25px;
-    font-family: 'MangoByeolbyeol';
+    font-family: 'MangoByeolbyeol', sans-serif;
     font-weight: 400;
-    margin: 0, auto;
+    margin: 0;
+    margin-right: 10px;
 }
 
 .serviceName { 
     color: white; 
     font-size: 40px;
-    font-family: 'MangoByeolbyeol'; 
+    font-family: 'MangoByeolbyeol', sans-serif; 
     font-weight: 400;
-    margin: 0, auto;
-    /* line-height: 1; */
+    margin: 0;
+    -webkit-text-stroke: 5px #8fc622;
+    paint-order: stroke fill;
 }
 
-.auth-conteiner {
-    width: 180px; height: 30px; left: 1008.17px; top: 6px; position: absolute;
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .auth-section {
-    width: 250px; left: 0px; top: 0px; display: flex; position: relative; color: white; 
-    font-size: 25px; font-family: Pretendard; font-weight: 900; word-wrap: break-word;
+    display: flex;
+    color: white; 
+    font-size: 25px;
+    font-family: Pretendard;
+    font-weight: 900;
+    margin-bottom: 10px;
+    margin-right: 40px;
 }
 
 .auth-link {
-    display: flex;
-    padding-right: 20px;
+    margin-left: 20px;
 }
 
 .search-container {
-    width: 100%; height: 100%; position: relative;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    margin-right: 30px;
 }
 
 .search-box {
-    width: 200px; height: 50px; left: 0px; top: 0px; position: absolute; 
-    background-color: white; border-radius: 20px; border: 2px #C0EA6A solid;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px #C0EA6A solid;
 }
 
 .search {
-    left: 20px; top: 10px; position: absolute; opacity: 0.70; color: black; 
-    font-size: 25px; font-family: Pretendard; font-weight: 400; word-wrap: break-word;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 30%;
+    color: black; 
+    font-size: 25px;
+    font-family: Pretendard;
+    font-weight: 400;
+    padding-bottom: 20px;
 }
 
 .search-icon {
-    width: 25px; height: 25px; left: 170px; top: 12px; position: absolute; 
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lower-section {
+    width: 100%;
 }
 
 .main-nav {
+    display: flex;
+    margin: 0 50px 0 50px;
+    justify-content: space-between;
     align-items: center;
-    font-family: Ownglyph_meetme-Rg;
-    font-size: 30px;     
+    font-family: MangoDdobak-B;
+    font-size: 20px;     
 }
+
 .nav-item {
-    padding-left: 20px;
-
+    color: black;
+    /* text-decoration: none; */
 }
-
 </style>

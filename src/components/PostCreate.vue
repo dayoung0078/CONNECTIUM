@@ -1,6 +1,9 @@
 <template>
+
+  <MainTop />
+
   <div>
-    <h2>새 게시글 작성</h2>
+    <h2>Q & A</h2>
     <form @submit.prevent="createPost">
       <div>
         <label for="title">제목:</label>
@@ -40,83 +43,84 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+import MainTop from '@/components/MainTop.vue';
 import api from '@/services/api';
 import axios from 'axios';
 
-export default {
-  name: 'PostCreate',
-  data() {
-    return {
-      post: {
-        title: '',
-        author:'',
-        content: '',
-        imageUrl: ''
-      },
-      selectedFile: null,
-      previewUrl: null,
-      uploadStatus: ''
-    };
-  },
-  methods: {
-    async createPost() {
-      try {
-        if (this.selectedFile) {
-          await this.uploadImage();
-        }
-        await api.createPost(this.post);
-        this.$router.push('/');
-      } catch (error) {
-        console.error('Error creating post:', error);
-        this.uploadStatus = '게시글 작성 실패: ' + error.message;
-      }
-    },
-    onFileSelected(event) {
-      this.selectedFile = event.target.files[0];
-      if (this.selectedFile) { //파일이 선택되었을때만 미리보기 실행.
-        this.createPreview();
-      } else { //파일선택이 안되었으면 미리보기는 null반환.
-        this.previewUrl = null;
-      }
-    },
-    createPreview() {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.previewUrl = e.target.result;
-      };
-      reader.readAsDataURL(this.selectedFile);
-    },
-    removePreview() {
-    this.previewUrl = null;
-    this.selectedFile = null;
-    this.uploadStatus = '';
-    // 파일 입력 필드를 초기화시켜서 삭제해줌. 
-    const fileInput = this.$refs.fileInput;
-    if (fileInput) fileInput.value = '';
-    },
-    async uploadImage() {
-      if (!this.selectedFile) {
-        this.uploadStatus = '파일을 선택해주세요.';
-        return;
-      }
+const router = useRouter();
 
-      const formData = new FormData();
-      formData.append('image', this.selectedFile, this.selectedFile.name);
+const post = reactive({
+  title: '',
+  author: '',
+  content: '',
+  imageUrl: ''
+});
 
-      try {
-        const response = await axios.post('/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        this.uploadStatus = '업로드 성공! : ' + response.data.message;
-        this.post.imageUrl = response.data.imageUrl; // 서버에서 반환된 이미지 URL 저장
-      } catch (error) {
-        this.uploadStatus = '업로드 실패! : ' + error.message;
-        throw error; // 상위 메소드에서 처리할 수 있도록 에러를 다시 throw
+const selectedFile = ref(null);
+const previewUrl = ref(null);
+const uploadStatus = ref('');
+const fileInput = ref(null);
+
+const createPost = async () => {
+  try {
+    if (selectedFile.value) {
+      await uploadImage();
+    }
+    await api.createPost(post);
+    router.push('/');
+  } catch (error) {
+    console.error('Error creating post:', error);
+    uploadStatus.value = '게시글 작성 실패: ' + error.message;
+  }
+};
+
+const onFileSelected = (event) => {
+  selectedFile.value = event.target.files[0];
+  if (selectedFile.value) {
+    createPreview();
+  } else {
+    previewUrl.value = null;
+  }
+};
+
+const createPreview = () => {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    previewUrl.value = e.target.result;
+  };
+  reader.readAsDataURL(selectedFile.value);
+};
+
+const removePreview = () => {
+  previewUrl.value = null;
+  selectedFile.value = null;
+  uploadStatus.value = '';
+  if (fileInput.value) fileInput.value.value = '';
+};
+
+const uploadImage = async () => {
+  if (!selectedFile.value) {
+    uploadStatus.value = '파일을 선택해주세요.';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('image', selectedFile.value, selectedFile.value.name);
+
+  try {
+    const response = await axios.post('/api/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-    }    
+    });
+    uploadStatus.value = '업로드 성공! : ' + response.data.message;
+    post.imageUrl = response.data.imageUrl;
+  } catch (error) {
+    uploadStatus.value = '업로드 실패! : ' + error.message;
+    throw error;
   }
 };
 </script>

@@ -21,9 +21,10 @@
                             <router-link to="#" class="auth-link">회원가입</router-link>
                         </div>                      
                         <div class="search-container">                                
-                            <div class="search-box"></div>                            
-                            <h5 class="search"> 검색 </h5>
-                            <img class="search-icon" src="@/assets/images/top/searchtool.png" />                                
+                            <div class="search-box">                            
+                                <input type="text" class="search" placeholder="검색" />
+                                <img class="search-icon" src="@/assets/images/top/searchtool.png" alt="검색"/> 
+                            </div>                               
                         </div>
                     </div>
                 </div>
@@ -49,6 +50,7 @@ import { RouterLink } from 'vue-router';
 <style src="@/assets/font.css"></style>
 
 <style scoped>
+
 .top-header {
     padding-right: 30px;
     padding-left: 30px;
@@ -59,7 +61,7 @@ import { RouterLink } from 'vue-router';
     background: #B3E000;
     box-shadow: 0px 3px 7px #DBFA5F;
     border-radius: 50px;
-    padding: 20px;
+    padding: 1% 15% 1% 15%;
     display: flex;
     flex-direction: column;
 }
@@ -129,11 +131,11 @@ import { RouterLink } from 'vue-router';
 .auth-section {
     display: flex;
     color: white; 
-    font-size: 25px;
+    font-size: 20px;
     font-family: Pretendard;
     font-weight: 900;
     margin-bottom: 10px;
-    margin-right: 40px;
+    margin-right: 60px;
 }
 
 .auth-link {
@@ -153,19 +155,28 @@ import { RouterLink } from 'vue-router';
     background-color: white;
     border-radius: 20px;
     border: 2px #C0EA6A solid;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .search {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 30%;
-    color: black; 
-    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0 40px 0 20px; /* 수정 */
+    font-size: 20px;
     font-family: Pretendard;
     font-weight: 400;
-    padding-bottom: 20px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.search::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    line-height: 50px; /* 추가: search-box의 높이와 동일하게 설정 */
+    vertical-align: middle; /* 추가 */
 }
 
 .search-icon {
@@ -193,5 +204,40 @@ import { RouterLink } from 'vue-router';
 .nav-item {
     color: black;
     /* text-decoration: none; */
+}
+
+@media (max-width: 1200px) {
+  .upper-section, .lower-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-slogan, .auth-container, .main-nav {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slogan, .serviceName {
+    font-size: 2rem;
+    margin: 5px 0;
+  }
+
+  .auth-section, .search-container {
+    margin: 10px 0;
+  }
+
+  .main-nav {
+    margin: 10px 0;
+  }
+
+  .nav-item {
+    margin: 5px 0;
+  }
 }
 </style>

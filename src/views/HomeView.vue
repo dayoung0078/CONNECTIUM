@@ -3,19 +3,23 @@
        <MainTop />
        <br>
        <HomeBody />
+       <br>
+       <HomeContents />
     </div>
 </template>
   
 <script>
 import MainTop from '@/components/MainTop.vue';
 import HomeBody from '@/components/HomeBody.vue';
+import HomeContents from '@/components/HomeContents.vue';
 
   
   export default {
     name: 'HomeView',
     components: {
       MainTop,
-      HomeBody
+      HomeBody,
+      HomeContents
     }
   }
 </script>

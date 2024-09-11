@@ -147,6 +147,7 @@ const uploadImage = async () => {
 .body {
   padding-right: 30px;
   padding-left: 30px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +155,7 @@ const uploadImage = async () => {
 
 .bodyLine {
   width: 100%;
-  height: 100%; 
+  height: auto; 
   background: white; 
   box-shadow: 0px 3px 7px #DBFA5F; 
   border-radius: 50px; 
@@ -164,7 +165,7 @@ const uploadImage = async () => {
 }
 
 .bodyBar {
-  margin: 0 20% 5% 20%;
+  margin: 0 20% 2% 20%;
 }
 
 .input-row {
@@ -201,7 +202,7 @@ const uploadImage = async () => {
 }
 
 textarea + .input-label {
-  top: 20px;
+  top: 15px;
   transform: none;
 }
 
@@ -248,7 +249,7 @@ input[type="text"], textarea {
   width: 100%;
   height: 100%; 
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   border: 2px #8CD000 solid;
   border-radius: 20px; 
   box-shadow: 0px 3px 7px #B3E000; 
@@ -333,7 +334,7 @@ textarea {
   font-size: 20px;
   font-family: Mango Ddobak;
   font-weight: 400;
-  letter-spacing: 2.50px;
+  letter-spacing: 1.50px;
   word-wrap: break-word;  
   cursor: pointer; /* 마우스 커서를 포인터로 변경 */
   transition: background-color 0.2s ease; /* 부드러운 색상 전환 효과 */

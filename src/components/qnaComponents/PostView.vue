@@ -4,7 +4,7 @@
       <p>{{ post.content }}</p>
       <router-link :to="`/post/${post.id}/edit`">수정</router-link>
       <button @click="deletePost">삭제</button>
-      <router-link to="/">목록으로 돌아가기</router-link>
+      <router-link to="/postList">목록으로 돌아가기</router-link>
     </div>
   </template>
   
@@ -32,7 +32,7 @@
       async deletePost() {
         try {
           await api.deletePost(this.$route.params.id);
-          this.$router.push('/');
+          this.$router.push('/postList');
         } catch (error) {
           console.error('Error deleting post:', error);
         }

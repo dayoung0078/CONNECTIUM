@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import PostCreate from '@/components/PostCreate.vue';
-import PostEdit from '@/components/PostEdit.vue';
-import PostView from '@/components/PostView.vue';
-import PostList from '@/components/PostList.vue';
+import PostCreate from '@/components/qnaComponents/PostCreate.vue';
+import PostEdit from '@/components/qnaComponents/PostEdit.vue';
+import PostView from '@/components/qnaComponents/PostView.vue';
+import PostList from '@/components/qnaComponents/PostList.vue';
 import HomeView from '@/views/HomeView.vue';
 
 

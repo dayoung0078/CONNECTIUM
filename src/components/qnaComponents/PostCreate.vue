@@ -2,8 +2,8 @@
 
   <MainTop />
 
-<div class="body">
-  <div class="bodyLine">
+<div class="common-Container">
+  <div class="common-ContainerLine">
     <div>
       <h2 class="question">질문하기</h2>
       <div class="bodyContainer">
@@ -87,7 +87,7 @@ const createPost = async () => {
       await uploadImage();
     }
     await api.createPost(post);
-    router.push('/');
+    router.push('/postList');
   } catch (error) {
     console.error('Error creating post:', error);
     uploadStatus.value = '게시글 작성 실패: ' + error.message;
@@ -144,24 +144,15 @@ const uploadImage = async () => {
 
 <style scoped>
 
-.body {
-  padding-right: 30px;
-  padding-left: 30px;
-  padding-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.common-Container {
+  padding: 20px 30px 20px 30px;
 }
-
-.bodyLine {
-  width: 100%;
-  height: auto; 
-  background: white; 
-  box-shadow: 0px 3px 7px #DBFA5F; 
-  border-radius: 50px; 
-  border: 3px #8CD000 solid;
-  padding: 20px;
-  margin-top: 20px;
+.common-ContainerLine { 
+  width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px #8CD000 solid; 
+  height: auto; min-height: 330px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; 
 }
 
 .bodyBar {

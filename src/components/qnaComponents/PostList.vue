@@ -1,7 +1,7 @@
 <template>
   <MainTop />
-  <div class="q-Container">
-    <div class="q-ContainerLine">
+  <div class="common-Container">
+    <div class="common-ContainerLine">
       <div class="titleContainer">
         <div class="titleBox">
           <h2>Q & A</h2>
@@ -34,19 +34,17 @@
 
       <div class="q-list-Container">
         <div class="q-list-Line">
-          <div class="q-List">
-            <ul>
-              <li v-for="post in posts" :key="post.id">
-                {{ post.title }}
-                <router-link :to="`/post/${post.id}`">
-                  <button>보기</button>
-                </router-link>
-                <router-link :to="`/post/${post.id}/edit`">
-                  <button>수정</button>
-                </router-link>
-                <button @click="deletePost(post.id)">삭제</button>
-              </li>
-            </ul>
+          <div class="q-list-box">
+            <div class="q-list-bar">
+              <div class="q-list-Title" v-for="post in posts" :key="post.id">
+                <router-link :to="`/post/${post.id}`"> {{ post.title }} </router-link>                
+                
+                <div>
+                  <router-link :to="`/post/${post.id}/edit`" class="q-list-Edit"> 수정 </router-link>
+                  <button @click="deletePost(post.id)" class="q-list-Delete">삭제</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -88,11 +86,10 @@ onMounted(fetchPosts);
 </script>
 
 <style scoped>
-/* 스타일은 이전과 동일하게 유지 */
-.q-Container {
+.common-Container {
   padding: 20px 30px 20px 30px;
 }
-.q-ContainerLine { 
+.common-ContainerLine { 
   width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px #8CD000 solid; 
   height: auto; min-height: 330px;
   padding: 10px;
@@ -212,10 +209,56 @@ h2, h5 {
   flex-direction: column; 
 }
 
-.q-List {
-  padding: 5px;
+
+
+
+
+.q-list-Title {
+  display: flex;
+  padding: 0 10px 0 20px;
+  justify-content: space-between;
+  align-items: center;
   width: 100%; height: 45px; 
   color:black; font-family: Mango Ddobak; font-size: 20px;
   background: white; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 10px; border: 2px #8CD000 solid;
+  margin-bottom: 10px; /* 각 항목 사이에 간격 추가 */
+}
+.q-list-Title a {
+  text-decoration: none;
+  color: #242424;
+  font-family: Mango Ddobak;
+  font-size: 18px;
+  flex-grow: 1;
+  text-align: left; /* 왼쪽 정렬 */
+}
+
+.q-list-Edit,
+.q-list-Delete {
+  text-decoration: none;
+  color: white;
+  font-family: Mango Ddobak;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-left: 10px;
+  width: 50px; /* 버튼 너비 동일하게 설정 */
+  height: 30px; /* 버튼 높이 설정 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.q-list-Edit {
+  background-color: #dddddd;
+  border: 1px solid #dddddd;
+
+}
+.q-list-Delete {
+  background-color: #ff7878;
+  border: 1px solid #ff7878;
+}
+
+.q-list-Edit:hover,
+.q-list-Delete:hover {
+  opacity: 0.8;
 }
 </style>

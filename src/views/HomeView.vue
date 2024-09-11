@@ -10,8 +10,8 @@
   
 <script>
 import MainTop from '@/components/MainTop.vue';
-import HomeBody from '@/components/HomeBody.vue';
-import HomeContents from '@/components/HomeContents.vue';
+import HomeBody from '@/components/homeComponents/HomeBody.vue';
+import HomeContents from '@/components/homeComponents/HomeContents.vue';
 
   
   export default {

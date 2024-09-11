@@ -44,7 +44,7 @@
       async updatePost() {
         try {
           await api.updatePost(this.$route.params.id, this.post);
-          this.$router.push('/');
+          this.$router.push('/postList');
         } catch (error) {
           console.error('Error updating post:', error);
         }
